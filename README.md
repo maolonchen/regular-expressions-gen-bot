@@ -35,7 +35,7 @@ User Request (NL + samples)
   Error   │  Final Check ──► LLM confirms
   Report  │                    │
      │    │              ┌────┴────┐
-     └────►├──────────► │ CORRECT │ ──► Return
+     └────►├──────────►  │ CORRECT │ ──► Return
            │             └─────────┘
            ▼
       Retry (up to 20 attempts)
