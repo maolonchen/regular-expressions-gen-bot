@@ -1,0 +1,965 @@
+[
+  {
+    "user_request": "从文本中提取电子邮件地址",
+    "sample_input": "联系我们：test@example.com 获取更多信息",
+    "expected_matches": [
+      "test@example.com"
+    ],
+    "negative_examples": [
+      "无效邮箱",
+      "缺少@.com",
+      "@无效.com"
+    ],
+    "additional_examples": [
+      "联系 admin@site.net 或 test@example.com"
+    ]
+  },
+  {
+    "user_request": "从文本中提取电子邮件地址",
+    "sample_input": "联系我们：user.name@domain.co.uk 获取更多信息",
+    "expected_matches": [
+      "user.name@domain.co.uk"
+    ],
+    "negative_examples": [
+      "无效邮箱",
+      "缺少@.com",
+      "@无效.com"
+    ],
+    "additional_examples": [
+      "联系 admin@site.net 或 user.name@domain.co.uk"
+    ]
+  },
+  {
+    "user_request": "从文本中提取电子邮件地址",
+    "sample_input": "联系我们：user+tag@example.org 获取更多信息",
+    "expected_matches": [
+      "user+tag@example.org"
+    ],
+    "negative_examples": [
+      "无效邮箱",
+      "缺少@.com",
+      "@无效.com"
+    ],
+    "additional_examples": [
+      "联系 admin@site.net 或 user+tag@example.org"
+    ]
+  },
+  {
+    "user_request": "从文本中提取电子邮件地址",
+    "sample_input": "联系我们：firstname.lastname@company.com 获取更多信息",
+    "expected_matches": [
+      "firstname.lastname@company.com"
+    ],
+    "negative_examples": [
+      "无效邮箱",
+      "缺少@.com",
+      "@无效.com"
+    ],
+    "additional_examples": [
+      "联系 admin@site.net 或 firstname.lastname@company.com"
+    ]
+  },
+  {
+    "user_request": "从文本中提取电子邮件地址",
+    "sample_input": "联系我们：user123@test-domain.com 获取更多信息",
+    "expected_matches": [
+      "user123@test-domain.com"
+    ],
+    "negative_examples": [
+      "无效邮箱",
+      "缺少@.com",
+      "@无效.com"
+    ],
+    "additional_examples": [
+      "联系 admin@site.net 或 user123@test-domain.com"
+    ]
+  },
+  {
+    "user_request": "提取各种格式的电话号码",
+    "sample_input": "致电 +1-555-123-4567 预约时间",
+    "expected_matches": [
+      "+1-555-123-4567"
+    ],
+    "negative_examples": [
+      "555",
+      "1234567890123456",
+      "电话号码"
+    ],
+    "additional_examples": [
+      "致电 555-123-4567 联系我"
+    ]
+  },
+  {
+    "user_request": "提取各种格式的电话号码",
+    "sample_input": "致电 (555) 123-4567 预约时间",
+    "expected_matches": [
+      "(555) 123-4567"
+    ],
+    "negative_examples": [
+      "555",
+      "1234567890123456",
+      "电话号码"
+    ],
+    "additional_examples": [
+      "致电 (555) 123-8516 联系我"
+    ]
+  },
+  {
+    "user_request": "提取各种格式的电话号码",
+    "sample_input": "致电 555.123.4567 预约时间",
+    "expected_matches": [
+      "555.123.4567"
+    ],
+    "negative_examples": [
+      "555",
+      "1234567890123456",
+      "电话号码"
+    ],
+    "additional_examples": [
+      "致电 +1-555-123-4567 联系我"
+    ]
+  },
+  {
+    "user_request": "提取各种格式的电话号码",
+    "sample_input": "致电 555-123-4567 预约时间",
+    "expected_matches": [
+      "555-123-4567"
+    ],
+    "negative_examples": [
+      "555",
+      "1234567890123456",
+      "电话号码"
+    ],
+    "additional_examples": [
+      "致电 (555) 123-4567 联系我"
+    ]
+  },
+  {
+    "user_request": "提取各种格式的电话号码",
+    "sample_input": "致电 +44 20 7946 0958 预约时间",
+    "expected_matches": [
+      "+44 20 7946 0958"
+    ],
+    "negative_examples": [
+      "555",
+      "1234567890123456",
+      "电话号码"
+    ],
+    "additional_examples": [
+      "致电 +1-555-123-4567 联系我"
+    ]
+  },
+  {
+    "user_request": "提取各种格式的日期",
+    "sample_input": "活动安排在 2023-12-25",
+    "expected_matches": [
+      "2023-12-25"
+    ],
+    "negative_examples": [
+      "2023",
+      "十二月",
+      "无效日期"
+    ],
+    "additional_examples": [
+      "会议时间 12/25/2023"
+    ]
+  },
+  {
+    "user_request": "提取各种格式的日期",
+    "sample_input": "活动安排在 12/25/2023",
+    "expected_matches": [
+      "12/25/2023"
+    ],
+    "negative_examples": [
+      "2023",
+      "十二月",
+      "无效日期"
+    ],
+    "additional_examples": [
+      "会议时间 2023-12-25"
+    ]
+  },
+  {
+    "user_request": "提取各种格式的日期",
+    "sample_input": "活动安排在 25-Dec-2023",
+    "expected_matches": [
+      "25-Dec-2023"
+    ],
+    "negative_examples": [
+      "2023",
+      "十二月",
+      "无效日期"
+    ],
+    "additional_examples": [
+      "会议时间 12/25/2023"
+    ]
+  },
+  {
+    "user_request": "提取各种格式的日期",
+    "sample_input": "活动安排在 December 25, 2023",
+    "expected_matches": [
+      "December 25, 2023"
+    ],
+    "negative_examples": [
+      "2023",
+      "十二月",
+      "无效日期"
+    ],
+    "additional_examples": [
+      "会议时间 2023-12-25"
+    ]
+  },
+  {
+    "user_request": "提取各种格式的日期",
+    "sample_input": "活动安排在 25.12.2023",
+    "expected_matches": [
+      "25.12.2023"
+    ],
+    "negative_examples": [
+      "2023",
+      "十二月",
+      "无效日期"
+    ],
+    "additional_examples": [
+      "会议时间 25.12.2023"
+    ]
+  },
+  {
+    "user_request": "提取IPv4地址",
+    "sample_input": "服务器位于 192.168.1.1",
+    "expected_matches": [
+      "192.168.1.1"
+    ],
+    "negative_examples": [
+      "999.999.999.999",
+      "192.168.1",
+      "192.168.1.1.1"
+    ],
+    "additional_examples": [
+      "IP: 172.16.0.1"
+    ]
+  },
+  {
+    "user_request": "提取IPv4地址",
+    "sample_input": "服务器位于 10.0.0.1",
+    "expected_matches": [
+      "10.0.0.1"
+    ],
+    "negative_examples": [
+      "999.999.999.999",
+      "192.168.1",
+      "192.168.1.1.1"
+    ],
+    "additional_examples": [
+      "IP: 8.8.8.8"
+    ]
+  },
+  {
+    "user_request": "提取IPv4地址",
+    "sample_input": "服务器位于 255.255.255.0",
+    "expected_matches": [
+      "255.255.255.0"
+    ],
+    "negative_examples": [
+      "999.999.999.999",
+      "192.168.1",
+      "192.168.1.1.1"
+    ],
+    "additional_examples": [
+      "IP: 8.8.8.8"
+    ]
+  },
+  {
+    "user_request": "提取IPv4地址",
+    "sample_input": "服务器位于 172.16.0.1",
+    "expected_matches": [
+      "172.16.0.1"
+    ],
+    "negative_examples": [
+      "999.999.999.999",
+      "192.168.1",
+      "192.168.1.1.1"
+    ],
+    "additional_examples": [
+      "IP: 192.168.1.1"
+    ]
+  },
+  {
+    "user_request": "提取IPv4地址",
+    "sample_input": "服务器位于 8.8.8.8",
+    "expected_matches": [
+      "8.8.8.8"
+    ],
+    "negative_examples": [
+      "999.999.999.999",
+      "192.168.1",
+      "192.168.1.1.1"
+    ],
+    "additional_examples": [
+      "IP: 255.255.255.0"
+    ]
+  },
+  {
+    "user_request": "从文本中提取URL",
+    "sample_input": "访问 https://www.example.com 获取更多信息",
+    "expected_matches": [
+      "https://www.example.com"
+    ],
+    "negative_examples": [
+      "不是URL",
+      "www.",
+      "http://"
+    ],
+    "additional_examples": [
+      "查看 www.example.com"
+    ]
+  },
+  {
+    "user_request": "从文本中提取URL",
+    "sample_input": "访问 http://subdomain.example.com/path 获取更多信息",
+    "expected_matches": [
+      "http://subdomain.example.com/path"
+    ],
+    "negative_examples": [
+      "不是URL",
+      "www.",
+      "http://"
+    ],
+    "additional_examples": [
+      "查看 https://www.example.com"
+    ]
+  },
+  {
+    "user_request": "从文本中提取URL",
+    "sample_input": "访问 https://example.com:8080/page?param=value 获取更多信息",
+    "expected_matches": [
+      "https://example.com:8080/page?param=value"
+    ],
+    "negative_examples": [
+      "不是URL",
+      "www.",
+      "http://"
+    ],
+    "additional_examples": [
+      "查看 https://www.example.com"
+    ]
+  },
+  {
+    "user_request": "从文本中提取URL",
+    "sample_input": "访问 www.example.com 获取更多信息",
+    "expected_matches": [
+      "www.example.com"
+    ],
+    "negative_examples": [
+      "不是URL",
+      "www.",
+      "http://"
+    ],
+    "additional_examples": [
+      "查看 ftp://files.example.com"
+    ]
+  },
+  {
+    "user_request": "从文本中提取URL",
+    "sample_input": "访问 ftp://files.example.com 获取更多信息",
+    "expected_matches": [
+      "ftp://files.example.com"
+    ],
+    "negative_examples": [
+      "不是URL",
+      "www.",
+      "http://"
+    ],
+    "additional_examples": [
+      "查看 https://example.com:8080/page?param=value"
+    ]
+  },
+  {
+    "user_request": "提取各种格式的信用卡号码",
+    "sample_input": "尾号为 4532-1234-5678-9012 的卡被扣款",
+    "expected_matches": [
+      "4532-1234-5678-9012"
+    ],
+    "negative_examples": [
+      "1234",
+      "123456789012345",
+      "abcd-efgh-ijkl-mnop"
+    ],
+    "additional_examples": [
+      "卡号: 1234567890123456"
+    ]
+  },
+  {
+    "user_request": "提取各种格式的信用卡号码",
+    "sample_input": "尾号为 5555 5555 5555 4444 的卡被扣款",
+    "expected_matches": [
+      "5555 5555 5555 4444"
+    ],
+    "negative_examples": [
+      "1234",
+      "123456789012345",
+      "abcd-efgh-ijkl-mnop"
+    ],
+    "additional_examples": [
+      "卡号: 5555 8519 5555 7512"
+    ]
+  },
+  {
+    "user_request": "提取社会安全号码",
+    "sample_input": "档案中的SSN: 123-45-6789",
+    "expected_matches": [
+      "123-45-6789"
+    ],
+    "negative_examples": [
+      "12-345-6789",
+      "123456789",
+      "123-45-67890"
+    ],
+    "additional_examples": [
+      "SSN: 345-67-8901"
+    ]
+  },
+  {
+    "user_request": "提取社会安全号码",
+    "sample_input": "档案中的SSN: 234-56-7890",
+    "expected_matches": [
+      "234-56-7890"
+    ],
+    "negative_examples": [
+      "12-345-6789",
+      "123456789",
+      "123-45-67890"
+    ],
+    "additional_examples": [
+      "SSN: 345-67-8901"
+    ]
+  },
+  {
+    "user_request": "提取社会安全号码",
+    "sample_input": "档案中的SSN: 345-67-8901",
+    "expected_matches": [
+      "345-67-8901"
+    ],
+    "negative_examples": [
+      "12-345-6789",
+      "123456789",
+      "123-45-67890"
+    ],
+    "additional_examples": [
+      "SSN: 345-67-8901"
+    ]
+  },
+  {
+    "user_request": "提取社会安全号码",
+    "sample_input": "档案中的SSN: 456-78-9012",
+    "expected_matches": [
+      "456-78-9012"
+    ],
+    "negative_examples": [
+      "12-345-6789",
+      "123456789",
+      "123-45-67890"
+    ],
+    "additional_examples": [
+      "SSN: 123-45-6789"
+    ]
+  },
+  {
+    "user_request": "提取社会安全号码",
+    "sample_input": "档案中的SSN: 567-89-0123",
+    "expected_matches": [
+      "567-89-0123"
+    ],
+    "negative_examples": [
+      "12-345-6789",
+      "123456789",
+      "123-45-67890"
+    ],
+    "additional_examples": [
+      "SSN: 345-67-8901"
+    ]
+  },
+  {
+    "user_request": "提取十六进制颜色代码",
+    "sample_input": "选择的颜色: #FF0000",
+    "expected_matches": [
+      "#FF0000"
+    ],
+    "negative_examples": [
+      "#GGGGGG",
+      "#123",
+      "#12345"
+    ],
+    "additional_examples": [
+      "颜色: #123456"
+    ]
+  },
+  {
+    "user_request": "提取十六进制颜色代码",
+    "sample_input": "选择的颜色: #00FF00",
+    "expected_matches": [
+      "#00FF00"
+    ],
+    "negative_examples": [
+      "#GGGGGG",
+      "#123",
+      "#12345"
+    ],
+    "additional_examples": [
+      "颜色: #123456"
+    ]
+  },
+  {
+    "user_request": "提取十六进制颜色代码",
+    "sample_input": "选择的颜色: #0000FF",
+    "expected_matches": [
+      "#0000FF"
+    ],
+    "negative_examples": [
+      "#GGGGGG",
+      "#123",
+      "#12345"
+    ],
+    "additional_examples": [
+      "颜色: #0000FF"
+    ]
+  },
+  {
+    "user_request": "提取十六进制颜色代码",
+    "sample_input": "选择的颜色: #AABBCC",
+    "expected_matches": [
+      "#AABBCC"
+    ],
+    "negative_examples": [
+      "#GGGGGG",
+      "#123",
+      "#12345"
+    ],
+    "additional_examples": [
+      "颜色: #AABBCC"
+    ]
+  },
+  {
+    "user_request": "提取十六进制颜色代码",
+    "sample_input": "选择的颜色: #123456",
+    "expected_matches": [
+      "#123456"
+    ],
+    "negative_examples": [
+      "#GGGGGG",
+      "#123",
+      "#12345"
+    ],
+    "additional_examples": [
+      "颜色: #FF0000"
+    ]
+  },
+  {
+    "user_request": "从文本中提取标签",
+    "sample_input": "查看此帖子 #python 了解详情",
+    "expected_matches": [
+      "#python"
+    ],
+    "negative_examples": [
+      "# ",
+      "#",
+      "标签"
+    ],
+    "additional_examples": [
+      "标签: #python"
+    ]
+  },
+  {
+    "user_request": "从文本中提取标签",
+    "sample_input": "查看此帖子 #regex 了解详情",
+    "expected_matches": [
+      "#regex"
+    ],
+    "negative_examples": [
+      "# ",
+      "#",
+      "标签"
+    ],
+    "additional_examples": [
+      "标签: #testing"
+    ]
+  },
+  {
+    "user_request": "从文本中提取标签",
+    "sample_input": "查看此帖子 #testing 了解详情",
+    "expected_matches": [
+      "#testing"
+    ],
+    "negative_examples": [
+      "# ",
+      "#",
+      "标签"
+    ],
+    "additional_examples": [
+      "标签: #opensource"
+    ]
+  },
+  {
+    "user_request": "从文本中提取标签",
+    "sample_input": "查看此帖子 #opensource 了解详情",
+    "expected_matches": [
+      "#opensource"
+    ],
+    "negative_examples": [
+      "# ",
+      "#",
+      "标签"
+    ],
+    "additional_examples": [
+      "标签: #regex"
+    ]
+  },
+  {
+    "user_request": "从文本中提取标签",
+    "sample_input": "查看此帖子 #development 了解详情",
+    "expected_matches": [
+      "#development"
+    ],
+    "negative_examples": [
+      "# ",
+      "#",
+      "标签"
+    ],
+    "additional_examples": [
+      "标签: #development"
+    ]
+  },
+  {
+    "user_request": "提取社交媒体提及",
+    "sample_input": "嘿 @username，请查看这个",
+    "expected_matches": [
+      "@username"
+    ],
+    "negative_examples": [
+      "@",
+      "@ ",
+      "用户"
+    ],
+    "additional_examples": [
+      "提及: @testuser"
+    ]
+  },
+  {
+    "user_request": "提取社交媒体提及",
+    "sample_input": "嘿 @testuser，请查看这个",
+    "expected_matches": [
+      "@testuser"
+    ],
+    "negative_examples": [
+      "@",
+      "@ ",
+      "用户"
+    ],
+    "additional_examples": [
+      "提及: @testuser"
+    ]
+  },
+  {
+    "user_request": "提取社交媒体提及",
+    "sample_input": "嘿 @developer，请查看这个",
+    "expected_matches": [
+      "@developer"
+    ],
+    "negative_examples": [
+      "@",
+      "@ ",
+      "用户"
+    ],
+    "additional_examples": [
+      "提及: @testuser"
+    ]
+  },
+  {
+    "user_request": "提取社交媒体提及",
+    "sample_input": "嘿 @admin，请查看这个",
+    "expected_matches": [
+      "@admin"
+    ],
+    "negative_examples": [
+      "@",
+      "@ ",
+      "用户"
+    ],
+    "additional_examples": [
+      "提及: @moderator"
+    ]
+  },
+  {
+    "user_request": "提取社交媒体提及",
+    "sample_input": "嘿 @moderator，请查看这个",
+    "expected_matches": [
+      "@moderator"
+    ],
+    "negative_examples": [
+      "@",
+      "@ ",
+      "用户"
+    ],
+    "additional_examples": [
+      "提及: @admin"
+    ]
+  },
+  {
+    "user_request": "提取浮点数",
+    "sample_input": "价格是 19.99，税是 2.50",
+    "expected_matches": [
+      "19.99",
+      "2.50"
+    ],
+    "negative_examples": [
+      "abc",
+      "19",
+      "$"
+    ],
+    "additional_examples": [
+      "值: 3.14159"
+    ]
+  },
+  {
+    "user_request": "提取以大写字母开头的单词",
+    "sample_input": "John 访问了 New York 并见了 Sarah",
+    "expected_matches": [
+      "John",
+      "New",
+      "York",
+      "Sarah"
+    ],
+    "negative_examples": [
+      "john",
+      "the",
+      "and"
+    ],
+    "additional_examples": [
+      "Mary 去了 London"
+    ]
+  },
+  {
+    "user_request": "提取以 'ing' 结尾的单词",
+    "sample_input": "她正在 running 和 jumping",
+    "expected_matches": [
+      "running",
+      "jumping"
+    ],
+    "negative_examples": [
+      "run",
+      "jump",
+      "ing"
+    ],
+    "additional_examples": [
+      "Swimming 很有趣"
+    ]
+  },
+  {
+    "user_request": "提取包含数字的单词",
+    "sample_input": "版本 2.0 和 build123 已准备就绪",
+    "expected_matches": [
+      "2.0",
+      "build123"
+    ],
+    "negative_examples": [
+      "版本",
+      "build",
+      "已就绪"
+    ],
+    "additional_examples": [
+      "发布 alpha1 可用"
+    ]
+  },
+  {
+    "user_request": "提取引号字符串",
+    "sample_input": "他说 \"Hello World\" 给每个人",
+    "expected_matches": [
+      "\"Hello World\""
+    ],
+    "negative_examples": [
+      "\"",
+      "Hello",
+      "World"
+    ],
+    "additional_examples": [
+      "她回复 \"Good morning\""
+    ]
+  },
+  {
+    "user_request": "提取文件扩展名",
+    "sample_input": "Document.pdf 和 image.jpg 已附加",
+    "expected_matches": [
+      ".pdf",
+      ".jpg"
+    ],
+    "negative_examples": [
+      "Document",
+      "image",
+      "pdf"
+    ],
+    "additional_examples": [
+      "File.txt 很重要"
+    ]
+  },
+  {
+    "user_request": "提取 HH:MM 格式的时间",
+    "sample_input": "会议在 09:30，午餐在 12:45",
+    "expected_matches": [
+      "09:30",
+      "12:45"
+    ],
+    "negative_examples": [
+      "9:30",
+      "0930",
+      "12:45:30"
+    ],
+    "additional_examples": [
+      "开始于 14:00"
+    ]
+  },
+  {
+    "user_request": "提取带连字符的单词",
+    "sample_input": "Well-known 和 state-of-the-art 示例",
+    "expected_matches": [
+      "well-known",
+      "state-of-the-art"
+    ],
+    "negative_examples": [
+      "well",
+      "known",
+      "state"
+    ],
+    "additional_examples": [
+      "User-friendly 设计"
+    ]
+  },
+  {
+    "user_request": "提取括号中的数字",
+    "sample_input": "项目 (123) 和产品 (456) 已可用",
+    "expected_matches": [
+      "(123)",
+      "(456)"
+    ],
+    "negative_examples": [
+      "123",
+      "456",
+      "("
+    ],
+    "additional_examples": [
+      "订单 (789) 已准备就绪"
+    ]
+  },
+  {
+    "user_request": "提取带下划线的单词",
+    "sample_input": "variable_name 和 function_call 已使用",
+    "expected_matches": [
+      "variable_name",
+      "function_call"
+    ],
+    "negative_examples": [
+      "variable",
+      "name",
+      "_"
+    ],
+    "additional_examples": [
+      "my_function 已定义"
+    ]
+  },
+  {
+    "user_request": "提取浮点数",
+    "sample_input": "价格是 9.99，税是 .50",
+    "expected_matches": [
+      "19.99",
+      "2.50"
+    ],
+    "negative_examples": [
+      "abc",
+      "19",
+      "$"
+    ],
+    "additional_examples": [
+      "值: 3.14159"
+    ]
+  },
+  {
+    "user_request": "提取以大写字母开头的单词",
+    "sample_input": "John 访问了 New York 并见了 Sarah",
+    "expected_matches": [
+      "John",
+      "New",
+      "York",
+      "Sarah"
+    ],
+    "negative_examples": [
+      "john",
+      "the",
+      "and"
+    ],
+    "additional_examples": [
+      "Mary 去了 London"
+    ]
+  },
+  {
+    "user_request": "提取以 'ing' 结尾的单词",
+    "sample_input": "她正在 running 和 jumping",
+    "expected_matches": [
+      "running",
+      "jumping"
+    ],
+    "negative_examples": [
+      "run",
+      "jump",
+      "ing"
+    ],
+    "additional_examples": [
+      "Swimming 很有趣"
+    ]
+  },
+  {
+    "user_request": "提取包含数字的单词",
+    "sample_input": "版本 2.0 和 build123 已准备就绪",
+    "expected_matches": [
+      "2.0",
+      "build123"
+    ],
+    "negative_examples": [
+      "版本",
+      "build",
+      "已就绪"
+    ],
+    "additional_examples": [
+      "发布 alpha1 可用"
+    ]
+  },
+  {
+    "user_request": "提取引号字符串",
+    "sample_input": "他说 \"Hello World\" 给每个人",
+    "expected_matches": [
+      "\"Hello World\""
+    ],
+    "negative_examples": [
+      "\"",
+      "Hello",
+      "World"
+    ],
+    "additional_examples": [
+      "她回复 \"Good morning\""
+    ]
+  },
+  {
+    "user_request": "提取文件扩展名",
+    "sample_input": "Document.pdf 和 image.jpg 已附加",
+    "expected_matches": [
+      ".pdf",
+      ".jpg"
+    ],
+    "negative_examples": [
+      "Document",
+      "image",
+      "pdf"
+    ],
+    "additional_examples": [
+      "File.txt 很重要"
+    ]
+  }
+]

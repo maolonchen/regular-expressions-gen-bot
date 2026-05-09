@@ -1,0 +1,12 @@
+[project]
+name = "ldpas"
+version = "0.1.0"
+description = "Low-Dimensional Philosophical Analysis System"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "aiohttp>=3.10.11",
+    "uvicorn>=0.33.0",
+    "fastapi>=0.115.4",
+    "pydantic>=2.10.1",
+]
